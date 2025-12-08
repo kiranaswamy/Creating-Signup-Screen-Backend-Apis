@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
 app.use('/user',UserRoutes)
 
-db.sync({force:true})
+db.sync()
   .then(() => {
     app.listen(3000, () => {
       console.log('server is running');
