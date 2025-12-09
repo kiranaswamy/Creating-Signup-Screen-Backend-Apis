@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require("cors");
 const db = require('./utils/db-connections');
-const UserRoutes = require('./routes/userRoutes')
+const UserRoutes = require('./routes/userRoutes');
+const expenceRoutes = require('./routes/expenseRoute')
 
+require('./module');
 
 const app = express();
 app.use(cors());         
@@ -12,9 +14,10 @@ app.get('/', (req, res) => {
   res.send('server is created');
 });
 
-app.use('/user',UserRoutes)
+app.use('/user',UserRoutes);
+app.use('/api',expenceRoutes)
 
-db.sync()
+db.sync({force:true})
   .then(() => {
     app.listen(3000, () => {
       console.log('server is running');

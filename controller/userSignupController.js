@@ -2,7 +2,7 @@ const User = require('../module/userModule');
 const db = require('../utils/db-connections');
 const bcrypt = require('bcrypt');
 
-const adding = async (req, res) => {
+const signup = async (req, res) => {
   console.log('creating');
   try {
     const { name, email, password } = req.body;
@@ -35,4 +35,4 @@ const adding = async (req, res) => {
   }
 };
 
-module.exports = { adding };
+module.exports = { signup };
