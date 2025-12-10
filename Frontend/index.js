@@ -67,34 +67,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // SIGNIN
-  const signinForm = document.getElementById("signinForm");
-  if (signinForm) {
-    signinForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+ // SIGNIN
+const signinForm = document.getElementById("signinForm");
+if (signinForm) {
+  signinForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-      try {
-        const res = await axios.post("http://localhost:3000/user/signin", {
-          email, password
-        });
-        alert(res.data.message);
-        signinForm.reset();
-        // Redirect to dashboard or home page after successful login
-      } catch (err) {
-        const msg = err.response?.data?.message || "Something went wrong";
-        alert(msg);
-      }
-    });
-
-    // Link to signup page
-    const goToSignup = document.getElementById("goToSignup");
-    if (goToSignup) {
-      goToSignup.addEventListener("click", () => {
-        window.location.href = "signup.html";
+    try {
+      const res = await axios.post("http://localhost:3000/user/signin", {
+        email, password
       });
+
+      alert(res.data.message);
+
+      // ⭐ ONLY THESE TWO LINES ADDED ⭐
+      localStorage.setItem("token", res.data.token);
+      window.location.href = "expense.html";
+
+      signinForm.reset();
+    } catch (err) {
+      const msg = err.response?.data?.message || "Something went wrong";
+      alert(msg);
     }
+  });
+
+  // Link to signup page
+  const goToSignup = document.getElementById("goToSignup");
+  if (goToSignup) {
+    goToSignup.addEventListener("click", () => {
+      window.location.href = "signup.html";
+    });
   }
+}
+
 
 });

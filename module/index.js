@@ -1,5 +1,5 @@
-const User = require('./expenseModule');
-const Expense = require('./userModule');
+const User = require('./userModule');
+const Expense = require('./expenseModule');
 
 User.hasMany(Expense);
 Expense.belongsTo(User);

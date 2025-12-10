@@ -1,10 +1,17 @@
 const express = require('express');
 const cors = require("cors");
 const db = require('./utils/db-connections');
+
 const UserRoutes = require('./routes/userRoutes');
 const expenceRoutes = require('./routes/expenseRoute')
 
-require('./module');
+// const User = require('./module/userModule');
+// const Expense = require('./module/expenseModule');
+
+// User.hasMany(Expense);
+// Expense.belongsTo(User);
+
+require('./module')
 
 const app = express();
 app.use(cors());         

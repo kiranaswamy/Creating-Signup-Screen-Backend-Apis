@@ -22,3 +22,11 @@ button {
     padding: 8px 20px;
     cursor: pointer;
 }
+.leadr-board{
+    margin-top: 20px;
+    font-weight: bold;
+}
+.show-button{
+    border-radius: 5px;
+    background-color: antiquewhite;
+}

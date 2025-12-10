@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+   <link rel="stylesheet" href="index.css">
  
 </head>
 <body class="bg-light p-3">
@@ -35,9 +36,14 @@
         <div class="col-md-3">
           <button class="btn btn-primary w-100" type="button" onclick="Timetracker()">Add Expense</button>
         </div>
+        <div><p>You are the premium user</p>
+          <button class="show-button" type="submit" onClick="LeaderBoard()">Show Leaderboard</button>
+        </div>
       </div>
     </div>
-    <ul id="expense-list" class="list-group"></ul>
+    <div><h1>Expenses</h1> <ul id="expense-list" class="list-group"></ul></div>
+    <div class ='leadr-board'><h1>Leader Board</h1></div>
+   
   </div>
    <script src="expense.js"></script>
 </body>
