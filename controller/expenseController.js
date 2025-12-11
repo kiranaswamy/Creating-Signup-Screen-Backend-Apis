@@ -14,6 +14,11 @@ const addExpense = async (req, res) => {
       return res.status(400).json({ error: "Amount and Description required" });
     }
 
+     await User.increment("totalExpense", {
+      by: amount,
+      where: { id: userId }
+    });
+
     const expense = await Expense.create({
       amount,
       description,
@@ -43,6 +48,12 @@ const getExpenses = async (req, res) => {
 const deleteExpense = async (req, res) => {
   try {
     const id = req.params.id;
+
+ await User.decrement("totalExpense", {
+      by: exp.amount,
+      where: { id: exp.UserId }
+    });
+
     await Expense.destroy({ where: { id } });
     res.json({ message: "Expense deleted" });
   } catch (err) {
@@ -50,6 +61,8 @@ const deleteExpense = async (req, res) => {
     res.status(500).json({ error: "Failed to delete expense" });
   }
 };
+
+
 const leardboardData = async (req,res)=>{
   try {
     const leaderboard = await User.findAll({

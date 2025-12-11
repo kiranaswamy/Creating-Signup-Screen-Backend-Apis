@@ -23,6 +23,10 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    totalExpense: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+    }
   },
   
 );
