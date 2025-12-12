@@ -34,7 +34,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // SIGNUP
+  // -----------------SIGNUP--------------------------
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
     signupForm.addEventListener("submit", async (e) => {
@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // SIGNIN
- // SIGNIN
+
+ //------------------------- SIGNIN-----------------------------------
 const signinForm = document.getElementById("signinForm");
 if (signinForm) {
   signinForm.addEventListener("submit", async (e) => {
@@ -102,6 +102,26 @@ if (signinForm) {
     });
   }
 }
+//------------------------- forgot password----------------------
+ const forgotForm = document.getElementById("forgotForm");
+  if (forgotForm) {
+    forgotForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
+      const email = document.getElementById("forgotEmail").value.trim();
+
+      try {
+        const res = await axios.post("http://localhost:3000/password/forgot", {
+          email
+        });
+
+        alert("Password reset link sent to your email!");
+
+      } catch (error) {
+        console.error(error);
+        alert("Failed to send reset link");
+      }
+    });
+  }
 
 });

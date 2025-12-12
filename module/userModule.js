@@ -26,6 +26,14 @@ const User = sequelize.define(
     totalExpense: {
     type: DataTypes.INTEGER,
     defaultValue: 0,
+    },
+     resetToken: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    resetTokenExpiry: {
+      type: DataTypes.BIGINT,
+      allowNull: true
     }
   },
   
